@@ -1,0 +1,13 @@
+.calendar-container {
+  .calendar {
+    .table-calendar {
+      td {
+        padding: 10px;
+        border: 1px solid;
+        &.current{
+        background: rgba($primary_color,0.3);
+        }
+      }
+    }
+  }
+}

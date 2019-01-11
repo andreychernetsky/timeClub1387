@@ -1,0 +1,50 @@
+@import "./vars";
+@import "./float-classes";
+@import "./helpers";
+
+$column_width: (100%/$column_count);
+
+$medium_screen: (min-width: $small_window);
+$large_screen: (min-width: $medium_window);
+
+$small_screen_only: (max-width :$small_window);
+$medium_screen_only: (min-width: $small_window) and (max-width: $medium_window);
+$large_screen_only: (min-width: $medium_window) and (max-width: $site-width);
+
+.row {
+  @extend .clearfix;
+  margin: 0 auto;
+  max-width: $site-width;
+  .row {
+    margin: 0 -#{$column_space}px;
+    max-width: initial;
+  }
+}
+
+.columns, .column {
+  width: 100%;
+  float: left;
+  padding: 0 #{$column_space}px;
+}
+
+@for $i from 1 through $column_count {
+  .small-#{$i} {
+    width: $column_width * $i;
+  }
+}
+
+@include breakpoint($medium_screen) {
+  @for $i from 1 through $column_count {
+    .medium-#{$i} {
+      width: $column_width * $i;
+    }
+  }
+}
+
+@include breakpoint($large_screen) {
+  @for $i from 1 through $column_count {
+    .large-#{$i} {
+      width: $column_width * $i;
+    }
+  }
+}
